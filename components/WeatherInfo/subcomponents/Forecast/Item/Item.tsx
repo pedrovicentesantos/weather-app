@@ -17,7 +17,6 @@ const Item: React.FC<IProps> = ({ day, temperature, wind }) => {
   );
   const dayOfWeek = date.toLocaleString('en-us', { weekday: 'short' });
   const formattedTemperature = formatTemperatureString(temperature);
-  console.log(formattedTemperature)
 
   return (
     formattedTemperature ? (
