@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { InputLabel, MenuItem, FormControl, Button } from '@material-ui/core';
 import axios from 'axios';
 import { ChangeEvent, useEffect, useState } from 'react';

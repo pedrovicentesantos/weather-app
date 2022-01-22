@@ -2,6 +2,7 @@ import React from 'react';
 import { SuccessResponse } from '../../types';
 import Error from '../Error';
 import Loader from '../Loader';
+import { Current, Forecast } from './subcomponents';
 
 interface IProps {
   weather: SuccessResponse;
@@ -31,10 +32,12 @@ const WeatherInfo = ({ weather, city, isLoading, error }: IProps) => {
 
       {!isLoading && weather.info && (
         <>
-          <h1>{city}</h1>
-          <p>Current weather</p>
-          <p>{weather.info.temperature}</p>
-          <p>{weather.info.description}</p>
+          <Current city={city as string} temperature={weather.info.temperature} description={weather.info.description} />
+          <Forecast
+            currentTemperature={weather.info.temperature}
+            currentWind={weather.info.wind}
+            forecast={weather.info.forecast} 
+          />
         </>
       )}
     </main>
