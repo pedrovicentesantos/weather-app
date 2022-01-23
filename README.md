@@ -4,6 +4,10 @@ O repositório contém o projeto de uma aplicação que exibe o clima de determi
 
 Foi feito baseado [na seguinte live](https://www.youtube.com/watch?v=sRpEcObAxvQ) do programa Web Fullstack do Santander. O código-fonte do vídeo pode ser acessado no [repositório do Github](https://github.com/fkbral/santander-coders-web-live-2).
 
+O deploy foi realizado na Vercel e pode ser acessado em:
+
+https://weather-app-self-delta.vercel.app
+
 ## Aplicação
 
 A aplicação foi desenvolvida utilizando [Next.js](https://nextjs.org/docs/introduction/getting-started) e o TypeScript. Para a estilização, foi utilizado o [Material UI](https://material-ui.com/) e [Styled Components](https://www.styled-components.com/).
