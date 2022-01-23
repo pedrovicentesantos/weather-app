@@ -5,6 +5,10 @@ const StyledDiv = styled.div`
   padding: 2rem 1rem;
   max-width: 500px;
   margin: 0 auto;
+
+  @media only screen and (min-width: 1024px) {
+    padding: 6rem 1rem;
+  }
 `;
 
 export default StyledDiv;
