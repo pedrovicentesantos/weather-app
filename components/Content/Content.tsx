@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { InputLabel, MenuItem, FormControl, Button } from '@material-ui/core';
+import { InputLabel, MenuItem, FormControl, Button, Link } from '@material-ui/core';
 import axios from 'axios';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { SuccessResponse } from '../../types';
 import WeatherInfo from '../WeatherInfo';
-import { StyledDiv, StyledSelect } from './styles';
+import { StyledDiv, StyledSelect, StyledButton } from './styles';
 
 interface IContentProps {
   ufs: string[];
@@ -38,11 +38,11 @@ const Content: React.FC<IContentProps> = ({ ufs }) => {
     }
   };
 
-  const getWeather = async () => {
+  const getWeather = async (city: string) => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`/api/weather?city=${selectedCity}`);
-      setSearchCity(selectedCity);
+      const response = await axios.get(`/api/weather?city=${city}`);
+      setSearchCity(city);
       setError(undefined);
       setWeather(response.data);
     } catch (error: any) {
@@ -61,6 +61,24 @@ const Content: React.FC<IContentProps> = ({ ufs }) => {
     setSelectedUf(event.target.value);
     setSelectedCity('');
   };
+
+  const handleDefault = () => {
+    const defaultLocation = {
+      uf: selectedUf,
+      city: selectedCity
+    }
+    localStorage.setItem('defaultLocation', JSON.stringify(defaultLocation));
+  }
+
+  useEffect(() => {
+    const defaultLocation = localStorage.getItem('defaultLocation');
+    if (defaultLocation) {
+      const { uf, city } = JSON.parse(defaultLocation);
+      setSelectedUf(uf);
+      setSelectedCity(city);
+      getWeather(city);
+    }
+  }, []);
 
   useEffect(() => {
     getCities(selectedUf as unknown as string);
@@ -106,13 +124,20 @@ const Content: React.FC<IContentProps> = ({ ufs }) => {
               </MenuItem>
             ))}
           </StyledSelect>
+          <StyledButton
+            disabled={!selectedCity}
+            onClick={handleDefault}
+            variant='text'
+          >
+            Choose as default
+          </StyledButton>
         </FormControl>
         <Button
           variant='contained'
           color='primary'
           fullWidth
           disabled={!selectedCity}
-          onClick={getWeather}
+          onClick={() => getWeather(selectedCity)}
         >
           Check weather
         </Button>
