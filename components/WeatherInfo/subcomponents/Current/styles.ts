@@ -4,6 +4,10 @@ import styled from 'styled-components';
 const StyledCard = styled(Card)`
   background-color: #283459 !important;
 
+  @media only screen and (min-width: 768px) {
+    margin-top: 1.5rem;
+  }
+
   .first {
     h2 {
       font-size: 22px;

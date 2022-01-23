@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@material-ui/core';
-import { StyledCard } from './styles';
+import { StyledCard, StyledCardContent } from './styles';
 
 interface IErrorProps {
   title: string;
@@ -9,10 +9,10 @@ interface IErrorProps {
 const Error: React.FC<IErrorProps> = ({ title, subtitle }) => {
   return (
     <StyledCard variant='outlined'>
-      <CardContent>
+      <StyledCardContent>
         <h3 className='text'>{title}</h3>
         <h4>{subtitle}</h4>
-      </CardContent>
+      </StyledCardContent>
     </StyledCard>
   );
 };

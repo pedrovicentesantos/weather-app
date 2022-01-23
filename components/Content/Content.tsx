@@ -47,6 +47,7 @@ const Content: React.FC<IContentProps> = ({ ufs }) => {
       setWeather(response.data);
     } catch (error: any) {
       setError(error.response.status);
+      setWeather({} as SuccessResponse);
       console.error(error.message);
     } finally {
       setIsLoading(false);

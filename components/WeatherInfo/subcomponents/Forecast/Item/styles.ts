@@ -17,6 +17,7 @@ const StyledItem = styled(Paper)`
   .field {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     p {
       margin-left: 0.25rem;

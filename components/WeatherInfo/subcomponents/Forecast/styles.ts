@@ -6,6 +6,10 @@ const StyledDiv = styled.div`
   h3 {
     margin-bottom: 1rem;
   }
+
+  @media only screen and (min-width: 768px) {
+    margin-top: 3rem;
+  }
 `;
 
 export { StyledDiv };
